@@ -172,9 +172,9 @@ if __name__ == "__main__":
     dist = compute_euclidean_distance_matrix(locations)
     route = nearest_neighbor(dist, locations)
     print("Cost is ", get_cost(route, dist))
-    #route = local_search(nodes, route, dist)
-    #print("After 2-opt ", get_cost(route, dist))
-    route = iterated_local_search(nodes, route, dist, max_iter=5)
-    print("After ILS", get_cost(route, dist))
+    route = local_search(nodes, route, dist)
+    print("After 2-opt ", get_cost(route, dist))
+    #route = iterated_local_search(nodes, route, dist, max_iter=5)
+    #print("After ILS", get_cost(route, dist))
     draw_routes(originalimage, route, locations)
     # Test everything and link to draw_path
