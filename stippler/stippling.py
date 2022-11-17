@@ -12,7 +12,7 @@ ORIGINAL_IMAGE = sys.argv[1]
 SAVE_IMAGE = True
 
 # Total number of points to stipple your image with
-NUMBER_OF_POINTS = 2000
+NUMBER_OF_POINTS = int(sys.argv[2])
 
 # Number of iterations for the algorithm to evenly spread out all the points. Increase if it looks like all the points haven't 'settled' after the last few iterations.
 NUMBER_OF_ITERATIONS = 50
