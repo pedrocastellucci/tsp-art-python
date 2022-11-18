@@ -1,4 +1,3 @@
-import math
 import sys
 import numpy as np
 from PIL import Image, ImageDraw
@@ -61,7 +60,7 @@ def nearest_neighbor(dist, locations):
     unvisited = set(range(1, n))  # Zero is already in route
     while len(unvisited) != 0:
         pivot = route[-1]
-        min_dist = math.inf
+        min_dist = np.inf
         nearest = None
         for j in unvisited:            
             if dist[pivot, j] < min_dist:
@@ -175,15 +174,11 @@ if __name__ == "__main__":
     nodes = list(range(len(locations)))
     dist = compute_euclidean_distance_matrix(locations)
     route = nearest_neighbor(dist, locations)
-    print("Cost is ", get_cost(route, dist))
-    #route = iterated_local_search(nodes, route, dist, max_iter=50)
-    #print("After ILS", get_cost(route, dist))
+    print("Cost is ", get_cost(route, dist))    
     #route = local_search(nodes, route, dist)
     #print("After 2-opt ", get_cost(route, dist))
-    T0 = get_cost(route, dist)
-    route = simulated_annealing(nodes, route, dist, T0=T0, alpha=0.999, max_iter=5000)
-    print("After SA", get_cost(route, dist))
-    route = local_search(nodes, route, dist)
-    print("After 2-opt ", get_cost(route, dist))
+    #T0 = get_cost(route, dist)
+    #route = simulated_annealing(nodes, route, dist, T0=T0, alpha=0.999, max_iter=5000)
+    #print("After SA", get_cost(route, dist))    
     draw_routes(originalimage, route, locations)
     # Test everything and link to draw_path
